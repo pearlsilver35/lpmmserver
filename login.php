@@ -65,22 +65,6 @@ if($DataMissing == 200){
     array($response);
     if($response["ResponseCode"] === "00"){
 
-        $loan->RoleID =$response['Response']['RoleID'];
-        $PWFName = $loan->getPWFName();
-
-    if($PWFName == "" && $data->Username != 'awotoye'){
-        // set response code - 400 bad request
-    http_response_code(400);
- 
-    // tell the user
-    echo json_encode(array("message" => "Login failed",
-                            "Error" => "User is Unauthorized"));
-
-    }else{ 
-        if($PWFName == "" ){
-            $PWFName == "Legal Team";
-        }   
-       
             $token = array(
                 "iss" => $iss,
                 "aud" => $aud,
@@ -90,7 +74,6 @@ if($DataMissing == 200){
                 "data" => array(
                     "Username" => $response['Response']['Username'],
                     "RoleID" => $response['Response']['RoleID'],
-                    "PWFName" => $PWFName,
                     "User" => $data->Username,
                     "Email" => $response['Response']['Email']
                 )
@@ -108,7 +91,7 @@ if($DataMissing == 200){
                          
                      )
                  );
-                }    
+     
     }elseif($response == NULL){
         // set response code
      http_response_code(401);
