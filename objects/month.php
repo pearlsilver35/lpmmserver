@@ -62,8 +62,8 @@ class Month
         (SELECT COUNT(DISTINCT CustomerID) FROM PageInsider WHERE New_Score > 0 AND New_Tier = 'Silver') AS 'Silver members',
         (SELECT COUNT(DISTINCT CustomerID) FROM PageInsider WHERE New_Score > 0 AND New_Tier = 'Gold') AS 'Gold members',
         (SELECT COUNT(DISTINCT CustomerID) FROM PageInsider WHERE New_Score > 0 AND New_Tier = 'Platinum') AS 'Platinum members',
-        (SELECT FORMAT(SUM(New_Score), 2) FROM PageInsider WHERE COD_DRCR = 'C' AND DATE_FORMAT(DATE(DateRated), '%y-%m') = DATE_FORMAT(DATE('2020-06-01'), '%y-%m')) AS 'Total Pages earned',
-        (SELECT FORMAT(SUM(New_Score), 2) FROM PageInsider WHERE COD_DRCR = 'D' AND DATE_FORMAT(DATE(DateRated), '%y-%m') = DATE_FORMAT(DATE('2020-06-01'), '%y-%m')) AS 'Total Pages redeemed'
+        (SELECT FORMAT(SUM(New_Score), 2) FROM PageInsider WHERE COD_DRCR = 'C' AND DATE_FORMAT(DATE(DateRated), '%y-%m') = DATE_FORMAT(DATE(:Monthx), '%y-%m')) AS 'Total Pages earned',
+        (SELECT FORMAT(SUM(New_Score), 2) FROM PageInsider WHERE COD_DRCR = 'D' AND DATE_FORMAT(DATE(DateRated), '%y-%m') = DATE_FORMAT(DATE(:Monthx), '%y-%m')) AS 'Total Pages redeemed'
         FROM
             PageInsider
         WHERE
@@ -72,6 +72,10 @@ class Month
         // prepare query statement
         $stmt = $this->conn->prepare($query);
         
+        $this->Month = htmlspecialchars(strip_tags($this->Month));
+        
+        $stmt->bindParam(':Monthx', $this->Month);
+
         global $err1;
         $err1 = $stmt->errorInfo();
         // execute query
@@ -84,14 +88,18 @@ class Month
     {
         
         // select all query
-        $query = "SELECT (SELECT Count(Distinct CustomerID) from PageInsider where New_Score>0 and New_Tier='Bronze' and `Old_Tier`!='Bronze' and date_format(date(DateRated),'%y-%m')=date_format(date('2020-06-01'),'%y-%m')) as 'Bronze',
-        (SELECT Count(Distinct CustomerID) from PageInsider where New_Score>0 and New_Tier='Silver' and `Old_Tier`!='Silver' and date_format(date(DateRated),'%y-%m')=date_format(date('2020-06-01'),'%y-%m')) as 'Silver',
-        (SELECT Count(Distinct CustomerID) from PageInsider where New_Score>0 and New_Tier='Gold' and `Old_Tier`!='Gold' and date_format(date(DateRated),'%y-%m')=date_format(date('2020-06-01'),'%y-%m')) as 'Gold',
-        (SELECT Count(Distinct CustomerID) from PageInsider where New_Score>0 and New_Tier='Platinum' and `Old_Tier`!='Platinum' and date_format(date(DateRated),'%y-%m')=date_format(date('2020-06-01'),'%y-%m')) as 'Platinum'";
+        $query = "SELECT (SELECT Count(Distinct CustomerID) from PageInsider where New_Score>0 and New_Tier='Bronze' and `Old_Tier`!='Bronze' and date_format(date(DateRated),'%y-%m')=date_format(date(:Monthx),'%y-%m')) as 'Bronze',
+        (SELECT Count(Distinct CustomerID) from PageInsider where New_Score>0 and New_Tier='Silver' and `Old_Tier`!='Silver' and date_format(date(DateRated),'%y-%m')=date_format(date(:Monthx),'%y-%m')) as 'Silver',
+        (SELECT Count(Distinct CustomerID) from PageInsider where New_Score>0 and New_Tier='Gold' and `Old_Tier`!='Gold' and date_format(date(DateRated),'%y-%m')=date_format(date(:Monthx),'%y-%m')) as 'Gold',
+        (SELECT Count(Distinct CustomerID) from PageInsider where New_Score>0 and New_Tier='Platinum' and `Old_Tier`!='Platinum' and date_format(date(DateRated),'%y-%m')=date_format(date(:Monthx),'%y-%m')) as 'Platinum'";
         
         // prepare query statement
         $stmt = $this->conn->prepare($query);
         
+        $this->Month = htmlspecialchars(strip_tags($this->Month));
+        
+        $stmt->bindParam(':Monthx', $this->Month);
+
         global $err1;
         $err1 = $stmt->errorInfo();
         // execute query
@@ -104,14 +112,18 @@ class Month
     {
         
         // select all query
-        $query = "SELECT (SELECT sum(New_Score) from PageInsider where New_Score>0 and New_Tier='Bronze' and COD_DRCR='C' and date_format(date(DateRated),'%y-%m')=date_format(date('2020-06-01'),'%y-%m')) as 'Bronze',
-        ifnull((SELECT sum(New_Score) from PageInsider where New_Score>0 and New_Tier='Silver' and COD_DRCR='C' and date_format(date(DateRated),'%y-%m')=date_format(date('2020-06-01'),'%y-%m')),0.0) as 'Silver',
-        ifnull((SELECT sum(New_Score) from PageInsider where New_Score>0 and New_Tier='Gold' and COD_DRCR='C' and date_format(date(DateRated),'%y-%m')=date_format(date('2020-06-01'),'%y-%m')),0.0) as 'Gold',
-        ifnull((SELECT sum(New_Score) from PageInsider where New_Score>0 and New_Tier='Platinum' and COD_DRCR='C' and date_format(date(DateRated),'%y-%m')=date_format(date('2020-06-01'),'%y-%m')),0.0) as 'Platinum'";
+        $query = "SELECT (SELECT sum(New_Score) from PageInsider where New_Score>0 and New_Tier='Bronze' and COD_DRCR='C' and date_format(date(DateRated),'%y-%m')=date_format(date(:Monthx),'%y-%m')) as 'Bronze',
+        ifnull((SELECT sum(New_Score) from PageInsider where New_Score>0 and New_Tier='Silver' and COD_DRCR='C' and date_format(date(DateRated),'%y-%m')=date_format(date(:Monthx),'%y-%m')),0.0) as 'Silver',
+        ifnull((SELECT sum(New_Score) from PageInsider where New_Score>0 and New_Tier='Gold' and COD_DRCR='C' and date_format(date(DateRated),'%y-%m')=date_format(date(:Monthx),'%y-%m')),0.0) as 'Gold',
+        ifnull((SELECT sum(New_Score) from PageInsider where New_Score>0 and New_Tier='Platinum' and COD_DRCR='C' and date_format(date(DateRated),'%y-%m')=date_format(date(:Monthx),'%y-%m')),0.0) as 'Platinum'";
         
         // prepare query statement
         $stmt = $this->conn->prepare($query);
         
+        $this->Month = htmlspecialchars(strip_tags($this->Month));
+        
+        $stmt->bindParam(':Monthx', $this->Month);
+
         global $err1;
         $err1 = $stmt->errorInfo();
         // execute query
