@@ -28,7 +28,6 @@ if($jwt){
         $GLOBALS['EMAIL'] = $decodeddata->Email;
         $GLOBALS['POSTEDUSER'] = $decodeddata->Username;
         $GLOBALS['ROLEID'] = $decodeddata->RoleID;
-        $GLOBALS['PWFName'] = $decodeddata->PWFName;
         $GLOBALS['USER'] = $decodeddata->User;
         return true;
 

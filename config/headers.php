@@ -1,7 +1,7 @@
 <?php
 include_once '../config/core.php';
 require_once '../validate_token.php';
-require_once '../emailnotification.php';
+// require_once '../emailnotification.php';
 
  if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
 
