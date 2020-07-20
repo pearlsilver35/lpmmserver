@@ -26,8 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
  
 $database = new Database();
 $db = $database->getConnection();
- 
-$loan = new Loan($db);
+
 // get posted data
 $data = json_decode(file_get_contents("php://input"));
  
