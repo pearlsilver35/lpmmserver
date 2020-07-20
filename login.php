@@ -3,8 +3,6 @@
 // get database connection
 include_once 'config/database.php';
 
-// instantiate loan object
-include_once 'objects/loan.php';
 
 // generate json web token
     include_once 'config/core.php';
