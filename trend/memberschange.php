@@ -4,31 +4,32 @@ require_once '../config/headers.php';
  
 // include database and object files
 include_once '../config/database.php';
-include_once '../objects/generic.php';
+include_once '../objects/trend.php';
  
 // get database connection
 $database = new Database();
 $db = $database->getConnection();
  
 // prepare report object
-$generic = new Generic($db);
+$trend = new Trend($db);
 
 $data = json_decode(file_get_contents("php://input"));
 //Preparing Data to send to Utility
 $dataarray = json_decode(file_get_contents("php://input") , true);
 $optionalfields = array();
-$expectedFields = array('TableName');
+$expectedFields = array('Month' , 'Tier');
 
 if($statuses == 'Access'){
 
     $DataMissing =   Utility::ValidateEmpty($dataarray, $expectedFields, $optionalfields);
 
     if($DataMissing == 200 || $DataMissing == ""){
-// set ID property of record to read
-$generic->TableName = strtolower($data->TableName);
+        
+        $trend->Month = $data->Month;
+        $trend->Tier = $data->Tier;
 
 // read the details of report to be edited
-$stmt = $generic->genericread();
+$stmt = $trend->memberschange();
 $num = $stmt->rowCount();
 
 if($num>0){

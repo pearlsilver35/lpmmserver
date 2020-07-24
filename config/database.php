@@ -2,8 +2,8 @@
 class Database{
  
     // specify your own database credentials
-    private $host = 'localhost';
-    //private $host = '66.70.202.147:3306';
+    //private $host = 'localhost';
+    private $host = '66.70.202.147:3306';
     private $db_name = "lpmm";
     //private $db_name = "livebusinessloan";
     private $username = "root";

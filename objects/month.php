@@ -27,30 +27,6 @@ class Month
     {
         $this->conn = $db;
     }
-    
-    
-    // //read pastpo
-    // function pastporead()
-    // {
-        
-    //     // query to read single record
-        
-    //     $query = "SELECT * FROM `pastpo` WHERE LoanID=:LoanID ;";
-    //     // prepare query statement
-    //     $stmt  = $this->conn->prepare($query);
-        
-    //     $this->LoanID = htmlspecialchars(strip_tags($this->LoanID));
-        
-    //     // bind LoanID of supplier to be selected
-    //     $stmt->bindParam(':LoanID', $this->LoanID);
-        
-    //     // execute query
-    //     $stmt->execute();
-        
-    //     return $stmt;
-        
-        
-    // }
 
     
     function pageinsider()
@@ -62,8 +38,8 @@ class Month
         (SELECT COUNT(DISTINCT CustomerID) FROM PageInsider WHERE New_Score > 0 AND New_Tier = 'Silver') AS 'Silver members',
         (SELECT COUNT(DISTINCT CustomerID) FROM PageInsider WHERE New_Score > 0 AND New_Tier = 'Gold') AS 'Gold members',
         (SELECT COUNT(DISTINCT CustomerID) FROM PageInsider WHERE New_Score > 0 AND New_Tier = 'Platinum') AS 'Platinum members',
-        (SELECT FORMAT(SUM(New_Score), 2) FROM PageInsider WHERE COD_DRCR = 'C' AND DATE_FORMAT(DATE(DateRated), '%y-%m') = DATE_FORMAT(DATE(:Monthx), '%y-%m')) AS 'Total Pages earned',
-        (SELECT FORMAT(SUM(New_Score), 2) FROM PageInsider WHERE COD_DRCR = 'D' AND DATE_FORMAT(DATE(DateRated), '%y-%m') = DATE_FORMAT(DATE(:Monthx), '%y-%m')) AS 'Total Pages redeemed'
+        (SELECT IFNULL(SUM(New_Score),'0') FROM PageInsider WHERE COD_DRCR = 'C' AND DATE_FORMAT(DATE(DateRated), '%y-%m') = DATE_FORMAT(DATE(:Monthx), '%y-%m')) AS 'Total Pages earned',
+        (SELECT IFNULL(SUM(New_Score),'0') FROM PageInsider WHERE COD_DRCR = 'D' AND DATE_FORMAT(DATE(DateRated), '%y-%m') = DATE_FORMAT(DATE(:Monthx), '%y-%m')) AS 'Total Pages redeemed'
         FROM
             PageInsider
         WHERE
@@ -112,7 +88,8 @@ class Month
     {
         
         // select all query
-        $query = "SELECT (SELECT sum(New_Score) from PageInsider where New_Score>0 and New_Tier='Bronze' and COD_DRCR='C' and date_format(date(DateRated),'%y-%m')=date_format(date(:Monthx),'%y-%m')) as 'Bronze',
+        $query = "SELECT 
+        ifnull((SELECT sum(New_Score) from PageInsider where New_Score>0 and New_Tier='Bronze' and COD_DRCR='C' and date_format(date(DateRated),'%y-%m')=date_format(date(:Monthx),'%y-%m')),0.0) as 'Bronze',
         ifnull((SELECT sum(New_Score) from PageInsider where New_Score>0 and New_Tier='Silver' and COD_DRCR='C' and date_format(date(DateRated),'%y-%m')=date_format(date(:Monthx),'%y-%m')),0.0) as 'Silver',
         ifnull((SELECT sum(New_Score) from PageInsider where New_Score>0 and New_Tier='Gold' and COD_DRCR='C' and date_format(date(DateRated),'%y-%m')=date_format(date(:Monthx),'%y-%m')),0.0) as 'Gold',
         ifnull((SELECT sum(New_Score) from PageInsider where New_Score>0 and New_Tier='Platinum' and COD_DRCR='C' and date_format(date(DateRated),'%y-%m')=date_format(date(:Monthx),'%y-%m')),0.0) as 'Platinum'";
@@ -131,6 +108,35 @@ class Month
         
         return $stmt;
     }
+
+    function pagesredeemed()
+    {
+        
+        // select all query
+        $query = "SELECT ifnull(Sum(New_Score),'0') as 'Total',DATE_ADD( DATE(wo.DateRated), INTERVAL (7 - DAYOFWEEK( wo.DateRated )) DAY) week_ending from PageInsider wo where New_Tier='Bronze' and COD_DRCR='D' and  date_format(date(DateRated),'%y-%m')=date_format(date(':Monthx'),'%y-%m')
+        GROUP BY week_ending;
+        SELECT Sum(New_Score) as 'Total',DATE_ADD( DATE(wo.DateRated), INTERVAL (7 - DAYOFWEEK( wo.DateRated )) DAY) week_ending from PageInsider wo where New_Tier='Silver' and COD_DRCR='D' and  date_format(date(DateRated),'%y-%m')=date_format(date(':Monthx'),'%y-%m')
+        GROUP BY week_ending;
+        SELECT Sum(New_Score) as 'Total',DATE_ADD( DATE(wo.DateRated), INTERVAL (7 - DAYOFWEEK( wo.DateRated )) DAY) week_ending from PageInsider wo where New_Tier='Gold' and COD_DRCR='D' and  date_format(date(DateRated),'%y-%m')=date_format(date(':Monthx'),'%y-%m')
+        GROUP BY week_ending;
+        SELECT Sum(New_Score) as 'Total',DATE_ADD( DATE(wo.DateRated), INTERVAL (7 - DAYOFWEEK( wo.DateRated )) DAY) week_ending from PageInsider wo where New_Tier='Platinum' and COD_DRCR='D' and  date_format(date(DateRated),'%y-%m')=date_format(date(':Monthx'),'%y-%m')
+        GROUP BY week_ending;";
+        
+        // prepare query statement
+        $stmt = $this->conn->prepare($query);
+        
+        $this->Month = htmlspecialchars(strip_tags($this->Month));
+        
+        $stmt->bindParam(':Monthx', $this->Month);
+
+        global $err1;
+        $err1 = $stmt->errorInfo();
+        // execute query
+        $stmt->execute();
+        
+        return $stmt;
+    }
+
    
 }
 

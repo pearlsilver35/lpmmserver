@@ -1,0 +1,599 @@
+{
+	"info": {
+		"_postman_id": "46ae5daa-0f30-4ef6-9964-3ef8f9c773ee",
+		"name": "LPMM",
+		"description": "Loyalty Program Measurement Mechanism Report Dashboard Server",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "month",
+			"item": [
+				{
+					"name": "http://localhost/month/pageinsider",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "*/*"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"Month\": \"2020-06-01\"\r\n}"
+						},
+						"url": {
+							"raw": "{{Local}}/month/pageinsider.php",
+							"host": [
+								"{{Local}}"
+							],
+							"path": [
+								"month",
+								"pageinsider.php"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Response_200",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "*/*"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"Username\" : \"it_unit\",\r\n    \"Password\" : \"Password01\"\r\n}"
+								},
+								"url": {
+									"raw": "{{Server 1}}/login.php",
+									"host": [
+										"{{Server 1}}"
+									],
+									"path": [
+										"login.php"
+									]
+								}
+							},
+							"code": 200,
+							"_postman_previewlanguage": "Text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "http://localhost/month/memberschange",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "*/*"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"Month\": \"2020-06-01\"\r\n}"
+						},
+						"url": {
+							"raw": "{{Local}}/month/memberschange.php",
+							"host": [
+								"{{Local}}"
+							],
+							"path": [
+								"month",
+								"memberschange.php"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Response_200",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "*/*"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"Username\" : \"it_unit\",\r\n    \"Password\" : \"Password01\"\r\n}"
+								},
+								"url": {
+									"raw": "{{Server 1}}/login.php",
+									"host": [
+										"{{Server 1}}"
+									],
+									"path": [
+										"login.php"
+									]
+								}
+							},
+							"code": 200,
+							"_postman_previewlanguage": "Text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "http://localhost/month/pagesredeemed",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "*/*"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"Month\": \"2020-06-01\"\r\n}"
+						},
+						"url": {
+							"raw": "{{Local}}/month/pagesredeemed.php",
+							"host": [
+								"{{Local}}"
+							],
+							"path": [
+								"month",
+								"pagesredeemed.php"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Response_200",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "*/*"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"Username\" : \"it_unit\",\r\n    \"Password\" : \"Password01\"\r\n}"
+								},
+								"url": {
+									"raw": "{{Server 1}}/login.php",
+									"host": [
+										"{{Server 1}}"
+									],
+									"path": [
+										"login.php"
+									]
+								}
+							},
+							"code": 200,
+							"_postman_previewlanguage": "Text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "http://localhost/month/amountredeemed",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "*/*"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"Month\": \"2020-06-01\"\r\n}"
+						},
+						"url": {
+							"raw": "{{Local}}/month/amountredeemed.php",
+							"host": [
+								"{{Local}}"
+							],
+							"path": [
+								"month",
+								"amountredeemed.php"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Response_200",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "*/*"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"Username\" : \"it_unit\",\r\n    \"Password\" : \"Password01\"\r\n}"
+								},
+								"url": {
+									"raw": "{{Server 1}}/login.php",
+									"host": [
+										"{{Server 1}}"
+									],
+									"path": [
+										"login.php"
+									]
+								}
+							},
+							"code": 200,
+							"_postman_previewlanguage": "Text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "http://localhost/month/pagesearned",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "*/*"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"Month\": \"2020-06-01\"\r\n}"
+						},
+						"url": {
+							"raw": "{{TestServer}}/month/pagesearned.php",
+							"host": [
+								"{{TestServer}}"
+							],
+							"path": [
+								"month",
+								"pagesearned.php"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Response_200",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "*/*"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"Username\" : \"it_unit\",\r\n    \"Password\" : \"Password01\"\r\n}"
+								},
+								"url": {
+									"raw": "{{Server 1}}/login.php",
+									"host": [
+										"{{Server 1}}"
+									],
+									"path": [
+										"login.php"
+									]
+								}
+							},
+							"code": 200,
+							"_postman_previewlanguage": "Text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "trend",
+			"item": [
+				{
+					"name": "http://localhost/trend/pagesredeemed",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "*/*"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"Month\": \"2020-04-01\",\r\n  \"Tier\": \"Silver\"\r\n}"
+						},
+						"url": {
+							"raw": "{{Local}}/trend/pagesredeemed.php",
+							"host": [
+								"{{Local}}"
+							],
+							"path": [
+								"trend",
+								"pagesredeemed.php"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Response_200",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "*/*"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"Username\" : \"it_unit\",\r\n    \"Password\" : \"Password01\"\r\n}"
+								},
+								"url": {
+									"raw": "{{Server 1}}/login.php",
+									"host": [
+										"{{Server 1}}"
+									],
+									"path": [
+										"login.php"
+									]
+								}
+							},
+							"code": 200,
+							"_postman_previewlanguage": "Text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "http://localhost/trend/memberschange",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "*/*"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"Month\": \"2020-04-01\",\r\n  \"Tier\": \"Bronze\"\r\n}"
+						},
+						"url": {
+							"raw": "{{Local}}/trend/memberschange.php",
+							"host": [
+								"{{Local}}"
+							],
+							"path": [
+								"trend",
+								"memberschange.php"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Response_200",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "*/*"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"Username\" : \"it_unit\",\r\n    \"Password\" : \"Password01\"\r\n}"
+								},
+								"url": {
+									"raw": "{{Server 1}}/login.php",
+									"host": [
+										"{{Server 1}}"
+									],
+									"path": [
+										"login.php"
+									]
+								}
+							},
+							"code": 200,
+							"_postman_previewlanguage": "Text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "http://localhost/trend/pagesearned",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "*/*"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"Month\": \"2020-04-01\",\r\n  \"Tier\": \"Bronze\"\r\n}"
+						},
+						"url": {
+							"raw": "{{Local}}/trend/pagesearned.php",
+							"host": [
+								"{{Local}}"
+							],
+							"path": [
+								"trend",
+								"pagesearned.php"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Response_200",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "*/*"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"Username\" : \"it_unit\",\r\n    \"Password\" : \"Password01\"\r\n}"
+								},
+								"url": {
+									"raw": "{{Server 1}}/login.php",
+									"host": [
+										"{{Server 1}}"
+									],
+									"path": [
+										"login.php"
+									]
+								}
+							},
+							"code": 200,
+							"_postman_previewlanguage": "Text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "http://localhost/lpmmserver/login.php",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "*/*"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"Username\" : \"it_unit\",\r\n    \"Password\" : \"Password01\"\r\n}"
+				},
+				"url": {
+					"raw": "{{TestServer}}/login.php",
+					"host": [
+						"{{TestServer}}"
+					],
+					"path": [
+						"login.php"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Response_200",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "*/*"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Username\" : \"it_unit\",\r\n    \"Password\" : \"Password01\"\r\n}"
+						},
+						"url": {
+							"raw": "{{Server 1}}/login.php",
+							"host": [
+								"{{Server 1}}"
+							],
+							"path": [
+								"login.php"
+							]
+						}
+					},
+					"code": 200,
+					"_postman_previewlanguage": "Text",
+					"header": [],
+					"cookie": [],
+					"body": ""
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9scG1zZXJ2ZXIub3JnIiwiYXVkIjoiaHR0cDpcL1wvbHBtc2VydmVyLmNvbSIsImlhdCI6MTU5NTU3OTIzMiwibmJmIjoxNTk1NTc5MjMyLCJleHAiOjE1OTU1OTM2MzIsImRhdGEiOnsiVXNlcm5hbWUiOiJJVCBVTklUIFRFU1QgQUNDT1VOVCIsIlJvbGVJRCI6IjQiLCJVc2VyIjoiaXRfdW5pdCIsIkVtYWlsIjoiaGFyZGVjeEB5YWhvby5jb20ifX0.7_IbJ9af8mQR8WHTI8PKJyA_-ldHnk50oX9wqfOGMh8",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "1424b10d-b157-4973-849e-8d73b0bade23",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "9c100396-0fff-40b8-bf36-1bb3067a0f45",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "e9594f47-8411-4dc8-88e4-525dd98d3851",
+			"key": "Local",
+			"value": "http://localhost/lpmmserver",
+			"type": "string"
+		},
+		{
+			"id": "455b9874-9a58-4d08-8b42-e39bd3ec90bc",
+			"key": "TestServer",
+			"value": "http://66.70.202.147/lpmmserver",
+			"type": "string"
+		},
+		{
+			"id": "3bf5ef9d-095b-4bdd-a713-14328fd56b2e",
+			"key": "LiveServer",
+			"value": "http://144.217.234.78/lpmmserver",
+			"type": "string"
+		}
+	],
+	"protocolProfileBehavior": {}
+}

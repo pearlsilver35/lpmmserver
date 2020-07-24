@@ -4,20 +4,20 @@ require_once '../config/headers.php';
  
 // include database and object files
 include_once '../config/database.php';
-include_once '../objects/loan.php';
+include_once '../objects/month.php';
  
 // get database connection
 $database = new Database();
 $db = $database->getConnection();
  
 // prepare report object
-$loan = new Loan($db);
+$month = new Month($db);
 
 $data = json_decode(file_get_contents("php://input"));
 //Preparing Data to send to Utility
 $dataarray = json_decode(file_get_contents("php://input") , true);
 $optionalfields = array();
-$expectedFields = array('LoanID');
+$expectedFields = array('Month');
 
 if($statuses == 'Access'){
 
@@ -25,10 +25,10 @@ if($statuses == 'Access'){
 
     if($DataMissing == 200 || $DataMissing == ""){
         
-        $loan->LoanID = $data->LoanID;
+        $month->Month = $data->Month;
 
 // read the details of report to be edited
-$stmt = $loan->readOne();
+$stmt = $month->pagesredeemed();
 $num = $stmt->rowCount();
 
 if($num>0){
