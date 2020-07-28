@@ -137,7 +137,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"Month\": \"2020-06-01\"\r\n}"
+							"raw": "{\r\n  \"Month\": \"2020-04-01\"\r\n}"
 						},
 						"url": {
 							"raw": "{{Local}}/month/pagesredeemed.php",
@@ -147,64 +147,6 @@
 							"path": [
 								"month",
 								"pagesredeemed.php"
-							]
-						}
-					},
-					"response": [
-						{
-							"name": "Response_200",
-							"originalRequest": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "Accept",
-										"value": "*/*"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n    \"Username\" : \"it_unit\",\r\n    \"Password\" : \"Password01\"\r\n}"
-								},
-								"url": {
-									"raw": "{{Server 1}}/login.php",
-									"host": [
-										"{{Server 1}}"
-									],
-									"path": [
-										"login.php"
-									]
-								}
-							},
-							"code": 200,
-							"_postman_previewlanguage": "Text",
-							"header": [],
-							"cookie": [],
-							"body": ""
-						}
-					]
-				},
-				{
-					"name": "http://localhost/month/amountredeemed",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "*/*"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n  \"Month\": \"2020-06-01\"\r\n}"
-						},
-						"url": {
-							"raw": "{{Local}}/month/amountredeemed.php",
-							"host": [
-								"{{Local}}"
-							],
-							"path": [
-								"month",
-								"amountredeemed.php"
 							]
 						}
 					},
@@ -548,7 +490,7 @@
 		"bearer": [
 			{
 				"key": "token",
-				"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9scG1zZXJ2ZXIub3JnIiwiYXVkIjoiaHR0cDpcL1wvbHBtc2VydmVyLmNvbSIsImlhdCI6MTU5NTU3OTIzMiwibmJmIjoxNTk1NTc5MjMyLCJleHAiOjE1OTU1OTM2MzIsImRhdGEiOnsiVXNlcm5hbWUiOiJJVCBVTklUIFRFU1QgQUNDT1VOVCIsIlJvbGVJRCI6IjQiLCJVc2VyIjoiaXRfdW5pdCIsIkVtYWlsIjoiaGFyZGVjeEB5YWhvby5jb20ifX0.7_IbJ9af8mQR8WHTI8PKJyA_-ldHnk50oX9wqfOGMh8",
+				"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9scG1zZXJ2ZXIub3JnIiwiYXVkIjoiaHR0cDpcL1wvbHBtc2VydmVyLmNvbSIsImlhdCI6MTU5NTk0NjE3MywibmJmIjoxNTk1OTQ2MTczLCJleHAiOjE1OTU5NjA1NzMsImRhdGEiOnsiVXNlcm5hbWUiOiJJVCBVTklUIFRFU1QgQUNDT1VOVCIsIlJvbGVJRCI6IjQiLCJVc2VyIjoiaXRfdW5pdCIsIkVtYWlsIjoiaGFyZGVjeEB5YWhvby5jb20ifX0.oHfQkDmfm3ARsUYD39EuUHJdvCzvc5jFF1JdfnRMGWQ",
 				"type": "string"
 			}
 		]
@@ -577,22 +519,19 @@
 	],
 	"variable": [
 		{
-			"id": "e9594f47-8411-4dc8-88e4-525dd98d3851",
+			"id": "7cd6e18b-7e8b-4450-ab40-51c1991b2e85",
 			"key": "Local",
-			"value": "http://localhost/lpmmserver",
-			"type": "string"
+			"value": "http://localhost/lpmmserver"
 		},
 		{
-			"id": "455b9874-9a58-4d08-8b42-e39bd3ec90bc",
+			"id": "891a2702-208b-4fb9-9858-90f0b537b650",
 			"key": "TestServer",
-			"value": "http://66.70.202.147/lpmmserver",
-			"type": "string"
+			"value": "http://66.70.202.147/lpmmserver"
 		},
 		{
-			"id": "3bf5ef9d-095b-4bdd-a713-14328fd56b2e",
+			"id": "d4f203f9-edd7-44ca-9bc2-123e31bef0e6",
 			"key": "LiveServer",
-			"value": "http://144.217.234.78/lpmmserver",
-			"type": "string"
+			"value": "http://144.217.234.78/lpmmserver"
 		}
 	],
 	"protocolProfileBehavior": {}

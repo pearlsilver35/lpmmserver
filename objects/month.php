@@ -114,44 +114,44 @@ class Month
         
         // select all query
         $query = "SELECT
-                    e.week_ending,
+                    e.WeekEnding,
                     IFNULL(a.Total,'0') AS Bronze,
                     IFNULL(b.Total,'0') AS Gold,
                     IFNULL(c.Total,'0') AS Silver,
                     IFNULL(d.Total,'0') AS Platinum
                 FROM
-                    (SELECT SUM(New_Score) AS 'Total', DATE_ADD(DATE(wo.DateRated),INTERVAL(7 - DAYOFWEEK(wo.DateRated)) DAY ) week_ending
+                    (SELECT SUM(New_Score) AS 'Total', DATE_ADD(DATE(wo.DateRated),INTERVAL(7 - DAYOFWEEK(wo.DateRated)) DAY ) WeekEnding
                     FROM PageInsider wo
                     WHERE COD_DRCR = 'D' AND DATE_FORMAT(DATE(DateRated),'%y-%m') = DATE_FORMAT(DATE(:Monthx),'%y-%m')
-                    GROUP BY week_ending) e
+                    GROUP BY WeekEnding) e
 
-                LEFT JOIN( SELECT SUM(New_Score) AS 'Total', DATE_ADD(DATE(wo.DateRated), INTERVAL(7 - DAYOFWEEK(wo.DateRated)) DAY ) week_ending
+                LEFT JOIN( SELECT SUM(New_Score) AS 'Total', DATE_ADD(DATE(wo.DateRated), INTERVAL(7 - DAYOFWEEK(wo.DateRated)) DAY ) WeekEnding
                     FROM PageInsider wo
                     WHERE New_Tier = 'Bronze' AND COD_DRCR = 'D' AND DATE_FORMAT(DATE(DateRated),'%y-%m') = DATE_FORMAT(DATE(:Monthx),'%y-%m')
-                    GROUP BY week_ending ) a
+                    GROUP BY WeekEnding ) a
                 ON
-                    e.week_ending = a.week_ending
+                    e.WeekEnding = a.WeekEnding
 
-                LEFT JOIN( SELECT SUM(New_Score) AS 'Total', DATE_ADD(DATE(wo.DateRated), INTERVAL(7 - DAYOFWEEK(wo.DateRated)) DAY ) week_ending
+                LEFT JOIN( SELECT SUM(New_Score) AS 'Total', DATE_ADD(DATE(wo.DateRated), INTERVAL(7 - DAYOFWEEK(wo.DateRated)) DAY ) WeekEnding
                     FROM PageInsider wo
                     WHERE New_Tier = 'Gold' AND COD_DRCR = 'D' AND DATE_FORMAT(DATE(DateRated),'%y-%m') = DATE_FORMAT(DATE(:Monthx),'%y-%m')
-                    GROUP BY week_ending ) b
+                    GROUP BY WeekEnding ) b
                 ON
-                    e.week_ending = b.week_ending
+                    e.WeekEnding = b.WeekEnding
 
-                LEFT JOIN( SELECT SUM(New_Score) AS 'Total', DATE_ADD(DATE(wo.DateRated), INTERVAL(7 - DAYOFWEEK(wo.DateRated)) DAY ) week_ending
+                LEFT JOIN( SELECT SUM(New_Score) AS 'Total', DATE_ADD(DATE(wo.DateRated), INTERVAL(7 - DAYOFWEEK(wo.DateRated)) DAY ) WeekEnding
                     FROM PageInsider wo
                     WHERE New_Tier = 'Silver' AND COD_DRCR = 'D' AND DATE_FORMAT(DATE(DateRated),'%y-%m') = DATE_FORMAT(DATE(:Monthx),'%y-%m')
-                    GROUP BY week_ending ) c
+                    GROUP BY WeekEnding ) c
                 ON
-                    e.week_ending = c.week_ending
+                    e.WeekEnding = c.WeekEnding
                     
-                LEFT JOIN( SELECT SUM(New_Score) AS 'Total', DATE_ADD(DATE(wo.DateRated), INTERVAL(7 - DAYOFWEEK(wo.DateRated)) DAY ) week_ending
+                LEFT JOIN( SELECT SUM(New_Score) AS 'Total', DATE_ADD(DATE(wo.DateRated), INTERVAL(7 - DAYOFWEEK(wo.DateRated)) DAY ) WeekEnding
                     FROM PageInsider wo
                     WHERE New_Tier = 'Platinum' AND COD_DRCR = 'D' AND DATE_FORMAT(DATE(DateRated),'%y-%m') = DATE_FORMAT(DATE(:Monthx),'%y-%m')
-                    GROUP BY week_ending ) d
+                    GROUP BY WeekEnding ) d
                 ON
-                    e.week_ending = d.week_ending";
+                    e.WeekEnding = d.WeekEnding";
         
         
         // prepare query statement
